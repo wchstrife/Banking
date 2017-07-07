@@ -2,10 +2,9 @@ package bank;
 
 public class Account {
 
-	private double balance;
+	protected double balance;
 
 	public Account(double init_balance) {
-		super();
 		this.balance = init_balance;
 	}
 
@@ -25,15 +24,14 @@ public class Account {
 	/*
 	 * 取款
 	 */
-	public boolean withdraw(double amt){
-		if(amt > this.getBalance()){
-			
-			return false;
-		}else{
-		this.balance -= amt;
+	public void withdraw(double amt){
 		
-		return true;
+		if(amt > this.getBalance()){			
+			throw new OverdraftException("资金不足", amt - balance);
 		}
+		
+		this.balance -= amt;				
+		
 	}
 	
 	

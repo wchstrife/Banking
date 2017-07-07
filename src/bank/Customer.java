@@ -1,17 +1,31 @@
 package bank;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 public class Customer {
 	
-	String firstName;
+	private String firstName;
 	
-	String lastName;
+	private String lastName;
 	
-	Account account;
-
-	public Customer(String firstName, String lastName) {
-		super();
+	private List<Account> accounts;	
+ 
+	public Customer(String firstName, String lastName) {		
 		this.firstName = firstName;
 		this.lastName = lastName;
+		
+		accounts = new ArrayList<Account>(); 
+		
+	}	
+	
+	public Account getAccount(int index) {
+		return accounts.get(index);
+	}
+
+	public void addAccount(Account account) {
+		accounts.add(account);
 	}
 
 	public String getFirstName() {
@@ -23,15 +37,11 @@ public class Customer {
 		return lastName;
 	}
 
-
-	public Account getAccount() {
-		return account;
+	public int getnumberOfAccounts() {		
+		return accounts.size();
 	}
 
-	public void setAccount(Account account) {
-		this.account = account;
+	public Iterator<Account> getAccounts(){
+		return accounts.iterator();
 	}
-	
-	
-
 }
